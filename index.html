@@ -25,7 +25,7 @@
                 </form>
                 <!--Div for the list group and clear history button-->
                 <button class="btn btn-primary" type="button" id="clear-history">Clear history</button>
-                <div class="card" style="width: 18rem;">
+                <div class="card" style="width: 15rem;">
                     <ul class="list-group list-group-flush list">
                     </ul>
                 </div>
@@ -33,22 +33,22 @@
 
             <!--container for daily weather info-->
             <div class="col-lg-9">
-                <div id="currentCity" class='mt-3 border border-primary'>
+                <div id="currentCity" class='mt-3 '>
                     <h4 id="name" class="lead">
                         <img class="icon"></img>
-                        <p class="date"></p>
+                        <span class="date"></span>
                     </h4>
                     <p class="temp"></p>
                     <p class="wind"></p>
                     <p class="humidity"></p>
-                    <p class= "uvcolor" id="uv-container"></p>
+                    <span id="uv-title"> </span><span class= "uvcolor" id="uv-container"></span>
                 </div>
             </div>
         </div>
 
         <!-- Container for the 5 day forecast. -->
         <div class="mt-4 col-md-12">
-            <h3 id="forecastTitle" class="mt-3 hide"> 5-Day Forecast:</h3>
+            <h3 id="forecastTitle" class="mt-3 hide"></h3>
             <div id="forecast" class="row m-3">
             </div>
         </div>

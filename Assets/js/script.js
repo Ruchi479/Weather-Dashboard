@@ -4,14 +4,11 @@ var city ="";
 var searchInput = $("#search-input");
 var searchBtn = $("#search-btn");
 var clearButton = $('#clear-history');
+var foreCast = $(".foreCast");
 var currentDate = moment().format("MMMM Do YYYY");
 var apiKey="87e739972e000c7762ddc089beba4fe9";
 var cityArray=[];
 
-
-
-//5day forecast variable
-var foreCast = $(".foreCast");
 
 //fetch function to call the  weatherInfo function and fetch method used
 function getApi(inputValue){
@@ -30,13 +27,15 @@ function getApi(inputValue){
             var city = inputValue.toUpperCase();
             cityArray = JSON.parse(localStorage.getItem("cityname")) || [];
             //console.log(cityArray);
-            if(data.cod == 200 && !cityArray.includes(city)){
-                cityArray =JSON.parse(localStorage.getItem("cityname")) || [];
+            if(data && !cityArray.includes(city)){
                 cityArray.push(city);
                 localStorage.setItem("cityname", JSON.stringify(cityArray));
                 listItems();
             }
     
+        })
+        .catch(function(err){
+            alert("No weather data for " + inputValue);
         });
 }
 
@@ -49,6 +48,7 @@ searchBtn.on("click", function (event){
         getApi(inputValue);
         //calling 5day forecast function
         displayForecast(inputValue);
+        searchInput.val("");
     }
     else {
         alert("Please enter a City Name");
@@ -68,6 +68,7 @@ function invokePastSearch(event){
     if(event.target.matches("li")){
         inputValue = liEl.textContent.trim();
         getApi(inputValue);
+        displayForecast(inputValue);
     }
 }
 
@@ -83,10 +84,6 @@ function clearHistory(event){
 $(document).on("click",invokePastSearch);
 $("#clear-history").on("click",clearHistory);
 
-
-
-
-
 //function to display current weather information
 function weatherInfo(data, inputValue) {
     //empties the search bar
@@ -99,9 +96,6 @@ function weatherInfo(data, inputValue) {
 
     $('.date').append('(' + currentDate + ')'  +' ');
     $('.date').append(data.name);
-
-    //make array
-
     var icon ="http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
     
     var temp =  data.main.temp;
@@ -140,7 +134,8 @@ function uvIndex(lon, lat){
             } else if(uV >= 8 && uV <= 10){
                 $('#uv-container').css("background-color", "red").css("color", "white");
             }
-            $("#uv-container").append("UV Index: " + uV);
+            $("#uv-title").text("UV Index: ");
+            $("#uv-container").append(uV);
         });
     
 };
@@ -170,6 +165,9 @@ function displayForecast(inputValue){
 
                 //calling forecastCard
                 forecastCard( date2, icon1, tempC1, windSpeed1, humidity1);
+
+                //border border-primary
+                $("#currentCity").addClass("border border-primary");
             }
         });
 }
@@ -194,9 +192,11 @@ function forecastCard(date2, icon1, tempC1, windSpeed1, humidity1){
     wind.text('Wind: ' + windSpeed1 +  ' MPH' );
     humidityField.text('Humidity: ' +humidity1+ '%');
     cardBody.append(cityDate, image, temperature, wind, humidityField)
+
+    //forecast title
+    $("#forecastTitle").text("5-Day Forecast: ");
 }
 
-$(window).on("load",loadlastCity());
 function loadlastCity(){
     var previouscities = JSON.parse(localStorage.getItem("cityname")) || [];
 
@@ -207,19 +207,3 @@ function loadlastCity(){
 }
 
 $(window).on("load",loadlastCity());
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

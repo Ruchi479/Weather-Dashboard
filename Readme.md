@@ -29,6 +29,12 @@ The current weather section is including the following weather characters and da
 
 * When the user view future weather conditions for that city, then the user presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity.
 
+# Links
+
+* [The URL of the GitHub repository](https://github.com/Ruchi479/Weather-Dashboard.git)
+
+* [The URL of my deployed application]()
+
 # Resources Used
 
 * [Event Listeners MDN](https://developer.mozilla.org/en-US/docs/web/api/eventlistener)
@@ -45,10 +51,3 @@ The current weather section is including the following weather characters and da
 # Screenshots
 ![Weather Dashboard](./Assets/img/img1.jpg)
 ![Weather Dashboard](./Assets/img/img2.jpg)
-
-
-# Links
-
-* [The URL of the GitHub repository](https://github.com/Ruchi479/Weather-Dashboard.git)
-
-* [The URL of my deployed application]()
