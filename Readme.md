@@ -33,7 +33,7 @@ The current weather section is including the following weather characters and da
 
 * [The URL of the GitHub repository](https://github.com/Ruchi479/Weather-Dashboard.git)
 
-* [The URL of my deployed application]()
+* [The URL of my deployed application](https://ruchi479.github.io/Weather-Dashboard/)
 
 # Resources Used
 
