@@ -34,9 +34,9 @@ function getApi(inputValue){
             }
     
         })
-        .catch(function(err){
-            alert("No weather data for " + inputValue);
-        });
+        // .catch(function(err){
+        //     alert("No weather data for " + inputValue);
+        // });
 }
 
 //search button event listener
@@ -137,7 +137,6 @@ function uvIndex(lon, lat){
             $("#uv-title").text("UV Index: ");
             $("#uv-container").append(uV);
         });
-    git 
 };
 
 //function to  get the 5day forecast
